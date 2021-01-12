@@ -9,7 +9,7 @@ export const constantRouterMap = [
     redirect: '/home',
     meta: {
       title: '进入',
-      keepAlive: false
+      keepAlive: true
     },
     children: [
       {
@@ -25,9 +25,11 @@ export const constantRouterMap = [
         meta: { title: '关于我', keepAlive: false }
       }
     ]
-    },
-    {
-      path:'/scroll',
-      component: () => import('@/views/layouts/scrollbar'),
-    }
+  },
+  {
+    path: '/line',
+    component: () => import('@/views/layouts/line'),
+    meta: { title: '关于我', keepAlive: false }
+  }
+
 ]
