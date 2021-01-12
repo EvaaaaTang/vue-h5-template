@@ -55,6 +55,30 @@ export default {
         this.img=require("@/assets/images/4-1.jpg");
         this.sta="2-4"
       }
+      else if (this.sta=="2-4"){
+        this.img=require("@/assets/images/4-2.jpg");
+        this.sta="2-5"
+      }
+      else if (this.sta=="2-5"){
+        this.img=require("@/assets/images/4-3.jpg");
+        this.sta="2-6"
+      }
+      else if (this.sta=="2-6"){
+        this.img=require("@/assets/images/5-1.jpg");
+        this.sta="2-7"
+      }
+      else if (this.sta=="2-7"){
+        this.img=require("@/assets/images/5-2.jpg");
+        this.sta="2-8"
+      }
+      else if (this.sta=="2-8"){
+        this.img=require("@/assets/images/5-3.jpg");
+        this.sta="2-9"
+      }
+      else if (this.sta=="2-9"){
+        this.img=require("@/assets/images/5-4.jpg");
+        this.sta="2-10"
+      }
       
     }
   },
