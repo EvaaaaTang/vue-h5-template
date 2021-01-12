@@ -19,7 +19,8 @@
 		methods:{
 			movetoNext(){
 				//location.href = this._tourl;
-				this.$emit('toNext',this._stage);
+				//console.log(this._stage);
+				this.$emit('toNext');
 			}
 		},
 		created(){
@@ -42,7 +43,7 @@
 		bottom: 0;
 		/* background: url("../../common/images/1-1.jpg") no-repeat;
 		background-size: cover; */
-		/* z-index: -1; */
+		z-index: -1;
 	}
 	.fade-enter {
 		opacity:0.3;
