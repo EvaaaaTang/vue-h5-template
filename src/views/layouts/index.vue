@@ -1,7 +1,9 @@
 <template>
   <div class="app-container">
     <bg v-bind:imgurl='img' v-bind:transon="ton" v-show="bgon" v-bind:stage='sta' @toNext="move"></bg>
-    <img :src='text1' v-if="text1on" style="z-index:100;width:100%;" @click= "move">
+    <transition name="moveUp">
+    <img class="text" :src='text1' v-if="text1on" :style="{transition:'transform '+transform+'s linear'}" @click= "move">
+    </transition>
     <video class="vi" v-if="videoon" id="myvideo" :src="videoSrc" :autoplay="autoplay">
     </video>
      <div class="player">
@@ -42,7 +44,8 @@ export default {
       state: false,
       bgon:true,
       audiosrc:"",
-      ton:false
+      ton:false,
+      transform:20,
     }
   },
   components: {
@@ -80,11 +83,18 @@ export default {
         this.img=require("@/assets/images/battlefield.jpg");
         this.sta="2-01";
         this.text1on=true;
+        // this.$nextTick(() =>{
+        //   this.transform=0;
+        // });
       }
       else if(this.sta=="2-01"){
         this.ton=true;
-        this.text1on=false;
+        this.transform=0;
         this.img=require("@/assets/images/2-01.jpg");
+        this.$nextTick(() =>{
+          this.text1on=false;
+        });
+        //this.text1on=false;
         this.sta="2-02";
       }
       else if (this.sta=="2-02"){
@@ -190,4 +200,18 @@ export default {
 		/* background: url("../../common/images/1-1.jpg") no-repeat;
 		background-size: cover; */
 	}
+  .text{
+    z-index: 100;
+    width:100%;
+  }
+  .moveUp-enter-active,  .moveUp-leave-active {
+    transition: all 20s linear 0.3;
+    transform: translateY(0);
+  }
+   .moveUp-enter,  .moveUp-leave {
+    transform: translateY(100%);
+  }
+   .moveUp-leave-to{
+     transform: translateY(100%);
+   }
 </style>
