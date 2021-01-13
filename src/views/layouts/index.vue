@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <bg v-bind:imgurl='img' v-show="bgon" v-bind:stage='sta' @toNext="move"></bg>
+    <bg v-bind:imgurl='img' v-bind:transon="ton" v-show="bgon" v-bind:stage='sta' @toNext="move"></bg>
     <img :src='text1' v-if="text1on" style="z-index:100;width:100%;" @click= "move">
     <video class="vi" v-if="videoon" id="myvideo" :src="videoSrc" :autoplay="autoplay">
     </video>
@@ -42,6 +42,7 @@ export default {
       state: false,
       bgon:true,
       audiosrc:"",
+      ton:false
     }
   },
   components: {
@@ -61,7 +62,8 @@ export default {
       if (this.sta=="1-1"){
         this.sta="2-0";
         this.videoon=true;
-        this.bgon=false;
+        this.ton=false;
+        //this.bgon=false;
         var self = this;
         this.$nextTick(() => {
           console.log("getting element");
@@ -76,11 +78,39 @@ export default {
       else if (this.sta=="2-0"){
         this.bgon=true;
         this.img=require("@/assets/images/battlefield.jpg");
-        this.sta="2-1";
+        this.sta="2-01";
         this.text1on=true;
       }
-      else if (this.sta=="2-1"){
+      else if(this.sta=="2-01"){
+        this.ton=true;
         this.text1on=false;
+        this.img=require("@/assets/images/2-01.jpg");
+        this.sta="2-02";
+      }
+      else if (this.sta=="2-02"){
+        // this.bgon=false;
+        //
+        this.ton=false;
+        //this.bgon=false;
+        this.videoSrc=require("@/assets/videos/map.mp4")
+        //this.text1on=false;
+        this.videoon=true;
+        var self = this;
+        this.sta="2-1";
+        this.$nextTick(() => {
+          console.log("getting element");
+          document.getElementById('myvideo').loop = false // 不设置视频循环播放  
+          document.getElementById('myvideo').addEventListener('ended',function(){
+            console.log("ended video playing")
+            self.videoon=false;
+            self.move();
+          });
+        });
+      }
+      else if (this.sta=="2-1"){
+        this.ton=true;
+        //this.text1on=false;
+        this.bgon=true;
         this.img=require("@/assets/images/3-1.jpg");
         this.sta="2-2";
       }
@@ -115,6 +145,9 @@ export default {
       else if (this.sta=="2-9"){
         this.img=require("@/assets/images/5-4.jpg");
         this.sta="2-10";
+      }
+      else if (this.sta=="2-10"){
+        this.sta="2-11";
         this.$router.push('/line')
       }
       
@@ -153,6 +186,7 @@ export default {
 		bottom: 0;
     width: 100%;
     height: 100%;
+    z-index:200;
 		/* background: url("../../common/images/1-1.jpg") no-repeat;
 		background-size: cover; */
 	}
