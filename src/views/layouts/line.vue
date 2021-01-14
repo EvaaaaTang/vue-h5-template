@@ -1,3 +1,4 @@
+  
 <template>
   <div class="app-container">
     <bg :imgurl='img' transon=true @toNext="clicking"></bg>
@@ -39,6 +40,14 @@
     <div class="l1" v-show="Lining[8]" :style="{top:top4+'px',left:right0+'px',height:height2+'px',width:width0+'px' }">
         <img src="~@/assets/images/line4.png" style="height:100%;width:100%;" >
     </div>
+ <div class="player">
+    <div
+      class="player-cd"
+      id="trigger"
+    >
+    <audio id="audio" :src="audiosrc" loop></audio>
+    </div>
+     </div>
   </div>
 </template>
 
@@ -79,15 +88,24 @@ export default {
            height2:0,
            height3:0,
            width0:0,
+           audiosrc:""
 
        }
    },
    components: {
     Bg
   },
+  created(){
+      this.audiosrc=require("@/assets/audio/festival.mp3")
+  },
   methods:{
+    createTouchstartEventAndDispatch (el) {
+      let event = document.createEvent('Events');
+      event.initEvent('touchstart', true, true);
+      el.dispatchEvent(event);
+    },
       move(){
-          this.$router.go(-1);
+          this.$router.push('/part3');
       },
       clicking(){
           if(this.sta==1){
@@ -137,6 +155,13 @@ export default {
       }
   },
   mounted(){
+      let trigger = document.getElementById('trigger')
+      let audio = document.getElementById('audio')
+      trigger.addEventListener('touchstart', () => {
+        audio.play()
+      })
+      // 模拟触发 「touchstart」 事件
+      this.createTouchstartEventAndDispatch(trigger)
       this.img=require('@/assets/images/background.jpg');
       const e0=document.getElementById("line0").getBoundingClientRect();
       const e1=document.getElementById("line1").getBoundingClientRect();
@@ -147,7 +172,7 @@ export default {
       this.top0=e0.bottom-20;
       this.top1=(e2.bottom+e2.top)/2;
       this.top2=e4.bottom-20;
-      this.right0=e0.right-10;
+      this.right0=e0.right-30;
       this.right1=e2.right-10;
       this.right2=e3.right-10;
       this.width0=e1.left-e0.right+40;
@@ -178,21 +203,21 @@ export default {
         padding-bottom:2rem;
         padding-left:0.5rem;
         padding-right:0.5rem;
-        grid-template-columns: 4rem 4rem;  
+        grid-template-columns: 4.5rem 4rem;  
         grid-template-rows: 4rem 4rem 4rem;
-        grid-column-gap: 1rem;
+        /* grid-column-gap: 1rem; */
         grid-row-gap:1rem;
         z-index:1;
     }
-    .item:nth-child(1){background: url('~@/assets/images/drum.png') no-repeat;
+    .item:nth-child(1){background: url('~@/assets/images/druma.png') no-repeat;
                        background-size:100% 100%;}
     .item:nth-child(2){background: url('~@/assets/images/textdrum1new.png') no-repeat;
                        background-size:100% 100%;}
-    .item:nth-child(3){background: url('~@/assets/images/drum2.png') no-repeat;
+    .item:nth-child(3){background: url('~@/assets/images/drumb.png') no-repeat;
                        background-size: 100% 100%}
     .item:nth-child(4){background: url('~@/assets/images/textdrum2new.png') no-repeat;
                        background-size: 100% 100%;}
-    .item:nth-child(5){background: url('~@/assets/images/drum3.png') no-repeat;
+    .item:nth-child(5){background: url('~@/assets/images/drumc.png') no-repeat;
                        background-size: 100% 100%;}
     .item:nth-child(6){background: url('~@/assets/images/textdrum31new.png') no-repeat;
                        background-size: 100% 100%;}

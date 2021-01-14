@@ -1,6 +1,6 @@
 <template>
 	<div class="bg">
-		<transition :name="transon ? 'fade' : ''" mode="out-in">
+		<transition :name="transon ? (long?'fadelong':'fade') : ''" mode="out-in">
 			<img v-bind:src="imgurl" :key="imgurl" style="height:100%;width:100%" @click="movetoNext"/>
 		</transition>
 	</div>
@@ -9,7 +9,7 @@
 <script>
 	export default{
 		name:'bg',
-		props:['imgurl','stage',"transon"],
+		props:['imgurl','stage',"transon","long"],
 		data(){
 			return{
 				_imgurl:'../../common/images/1-1.jpg',
@@ -29,8 +29,6 @@
 			this._imgurl=this.imgurl;
 			this._stage=this.stage;
 		}
-
-
 	}
 </script>
 
@@ -46,7 +44,7 @@
 		z-index: -1;
 	}
 	.fade-enter {
-		opacity:0.5;
+		opacity:0;
 	}
 	.fade-leave{
 		opacity:1;
@@ -57,5 +55,18 @@
 	.fade-leave-active{
 		opacity:0;
 		transition:opacity .3s;
+	}
+	.fadelong-enter {
+		opacity:0;
+	}
+	.fadelong-leave{
+		opacity:1;
+	}
+	.fadelong-enter-active{
+		transition:opacity 2s;
+	}
+	.fadelong-leave-active{
+		opacity:0;
+		transition:opacity 1s;
 	}
 </style>

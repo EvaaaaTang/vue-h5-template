@@ -30,6 +30,57 @@ export const constantRouterMap = [
     path: '/line',
     component: () => import('@/views/layouts/line'),
     meta: { title: '关于我', keepAlive: false }
+  },
+  {
+    path: '/part3',
+    component: () => import('@/views/layouts/Part3'),
+    meta: { title: '关于我', keepAlive: false }
+  },
+  {
+    path: '/part32',
+    component: () => import('@/views/layouts/Part3_2'),
+    meta: { title: '关于我', keepAlive: false }
+  },
+  {
+    path: '/part33',
+    component: () => import('@/views/layouts/Part3_3'),
+    meta: { title: '关于我', keepAlive: false }
+  },
+  {
+    path: '/part34',
+    component: () => import('@/views/layouts/Part3_4'),
+    meta: { title: '关于我', keepAlive: false }
+  },
+  {
+    path: '/part35',
+    component: () => import('@/views/layouts/Part3_5'),
+    meta: { title: '关于我', keepAlive: false }
+  },
+  {
+    path: '/part36',
+    component: () => import('@/views/layouts/Part3_6'),
+    meta: { title: '关于我', keepAlive: false }
+  },
+  {
+    path: '/part37',
+    component: () => import('@/views/layouts/Part3_7'),
+    meta: { title: '关于我', keepAlive: false }
+  },
+  {
+    path: '/answer',
+    component: () => import('@/views/layouts/Answer'),
+    meta: { title: '关于我', keepAlive: false }
+  },
+  {
+    path: '/answer2',
+    component: () => import('@/views/layouts/Answer2'),
+    meta: { title: '关于我', keepAlive: false }
+  },
+  {
+    path: '/video1',
+    component: () => import('@/views/layouts/Video1'),
+    meta: { title: '关于我', keepAlive: false }
   }
+
 
 ]

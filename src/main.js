@@ -7,10 +7,13 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import Video from 'video.js'
+import 'video.js/dist/video-js.css'
 
 // 设置 js中可以访问 $cdn
 import { $cdn } from '@/config'
 Vue.prototype.$cdn = $cdn
+Vue.prototype.$video = Video
 
 // 全局引入按需引入UI库 vant
 import '@/plugins/vant'
