@@ -21,6 +21,11 @@ export default {
         let audio = document.getElementById('audio1');
         audio.pause();
       }
+      else if(stage=="anima"){
+        let audio = document.getElementById('audio1');
+        audio.src=require("@/assets/audio/river.mp3");
+         audio.play();
+      }
     }
   }
 }

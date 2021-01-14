@@ -25,6 +25,7 @@ export default {
   methods:{
     movetoNext(){
       this.$emit('drumVideoFinished');
+      this.$router.push('/anima');
     }
   },
   created(){
