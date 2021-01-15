@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="keywords" content="">
+    <meta name="keywords" content="西溪风华">
+    <title>西溪风华</title>
     <link rel="stylesheet" type="text/css" href="h5.css">
 </head>
 <body>
@@ -126,14 +127,19 @@
 
                 console.log("移"+left);
                 console.log("停"+img_w);
-                ctx.drawImage(bgimg, 0, 0, img_w , img_h, left, 0, img_w *((canvas.height+20)/img_h), canvas.height);
+                var arg=0;
+                if(h/w > 2){
+                    arg=120;
+                }
+                ctx.drawImage(bgimg, 0, 0, img_w , img_h, left-arg, 0, img_w *((canvas.height+20)/img_h), canvas.height);
+
                 if (left < 0) {
                     left_logo -= 1.5;
                     $('#gradually').css('left', left_logo);
                 }
 
                 /*让第一张图片出来*/
-                if (left == (-grw+50*w/375) && flag == true) {
+                if (left == (-grw+50) && flag == true) {
                     $('.text_img').css('left', (left_but*0.5)).fadeIn();
                     faw = left_but;
                     flag = false;
@@ -147,19 +153,19 @@
                     }
                 });
               var myEvent = new Event('animateEnd');
+
                 //最后一张图片的位置
-                var lasw = parseInt($('#text>img:last-child').css('left')-50);
+                var lasw = parseInt($('#text>img:last-child').css('left')-500);
                 if (i <3) {
                     if (i == 2) {
                         if ((faw - lasw) > (1.4*imw) || $('#text>img').length == 0) {
                             var img1 = '<img class="text_img" id="text_0'+(i+1)+'" src="img/effect/text_0' + (i + 1) + '.png">';
-                            if ($('#text>img').length > 0) {
+                            if ($('#text>img').length > 10) {
                                 $('#text>img:last-child').after(img1);
-                                window.dispatchEvent(myEvent);
                             } else {
                                 $('#text').html(img1);
                             }
-                            $('#text>img:last-child').css('top',10).css('left', 0.7*left_but).css('height',h).fadeIn(3000);
+                            $('#text>img:last-child').css('top',10).css('left', left_but*0.7).css('height',h).fadeIn(3000);
                             faw = left_but;
                             i++;
                         }
@@ -172,7 +178,7 @@
                             console.log("看看" + left_but);
                             faw = left_but;
                             i++;
-                          window.dispatchEvent(myEvent);
+                            window.dispatchEvent(myEvent);
                             console.log(i);
                         }
                     }

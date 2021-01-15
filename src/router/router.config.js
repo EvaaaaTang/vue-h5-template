@@ -85,6 +85,16 @@ export const constantRouterMap = [
     path: '/anima',
     component: () => import('@/views/layouts/Animate'),
     meta: { title: '关于我', keepAlive: false }
+  },
+  {
+    path:'/part39',
+    component:() => import('@/views/layouts/Part3_9'),
+    meta: { title: '关于我', keepAlive: false }
+  },
+  {
+    path:'/part4',
+    component:() => import('@/views/layouts/Part4'),
+    meta: { title: '关于我', keepAlive: false }
   }
 
 
